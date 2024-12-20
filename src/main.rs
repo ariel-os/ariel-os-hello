@@ -3,13 +3,15 @@
 #![feature(type_alias_impl_trait)]
 #![feature(used_with_arg)]
 
-use riot_rs::debug::{exit, log::info};
+use ariel_os::debug::{exit, log::info, ExitCode};
 
-#[riot_rs::thread(autostart)]
+#[ariel_os::thread(autostart)]
 fn main() {
     info!(
-        "Hello from riot_main()! Running on a {} board.",
-        riot_rs::buildinfo::BOARD
+        "{} says hello! Running on a {} board.",
+        ariel_os::buildinfo::OS_NAME,
+        ariel_os::buildinfo::BOARD,
     );
-    exit(Ok(()));
+
+    exit(ExitCode::SUCCESS);
 }

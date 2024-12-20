@@ -1,28 +1,10 @@
 [package]
-name = "riot-rs-hello"
+name = "ariel-os-hello"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-riot-rs = { path = "build/imports/riot-rs/src/riot-rs", features = [ "threading" ] }
-riot-rs-boards = { path = "build/imports/riot-rs/src/riot-rs-boards" }
-
-[patch.crates-io]
-# riot-rs embassy fork
-embassy-executor = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-hal-internal = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-nrf = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-net = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-rp = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-net-driver = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-net-driver-channel = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-stm32 = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-sync = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-time-driver = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-time-queue-driver = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-embassy-usb-driver = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-cyw43 = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-cyw43-pio = { git = "https://github.com/kaspar030/embassy", branch = "for-riot-rs-2024-08-18" }
-
-# version 0.12-to-be
-smoltcp = { git = "https://github.com/smoltcp-rs/smoltcp.git", rev = "125773e282bc2e0c914a49e9c75573926e26e558" }
+ariel-os = { path = "build/imports/ariel-os/src/ariel-os", features = [
+  "threading",
+] }
+ariel-os-boards = { path = "build/imports/ariel-os/src/ariel-os-boards" }
