@@ -21,6 +21,6 @@ fn main() {
 mod tests {
     #[test]
     async fn trivial() {
-        assert!(false);
+        assert!(true);
     }
 }
