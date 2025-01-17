@@ -16,4 +16,4 @@ name = "ariel-os-hello"     # needs to match the package name set above
 harness = false
 
 [dev-dependencies]
-embedded-test = { version = "0.5.0", features = [ "ariel-os" ] }
+embedded-test = { version = "0.5.0", features = ["ariel-os"] }
