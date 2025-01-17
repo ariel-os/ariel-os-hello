@@ -1,8 +1,11 @@
 imports:
   - git:
       url: https://github.com/ariel-os/ariel-os
-      commit: bef89914cd1ebf579e629a3a24a20b7e0723c981
+      commit: c83c149bf1066edd12118173b8b29c1bf1654c1a
     dldir: ariel-os
 
 apps:
   - name: ariel-os-hello
+    context: nrf52840dk
+    selects:
+      - embedded-test
