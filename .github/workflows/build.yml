@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-binstall
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: "Installing prerequisites"
+        run: |
+          git config --global init.defaultBranch main
+          git config --global user.email "ci@example.org"
+          git config --global user.name "CI"
+          rm .cargo/config.toml
+          cargo binstall --no-confirm --no-symlinks --force --no-discover-github-token laze
+          git restore .cargo/config.toml
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+          sudo apt-get install ninja-build gcc-arm-none-eabi
+
+      - name: "Install toolchains"
+        run: |
+          laze build --builders host install-toolchain
+
+      - name: "Compile test"
+        run: |
+          CONFIG_WIFI_NETWORK='test' CONFIG_WIFI_PASSWORD='password' laze build
