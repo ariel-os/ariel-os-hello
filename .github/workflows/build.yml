@@ -31,7 +31,9 @@ jobs:
           git config --global init.defaultBranch main
           git config --global user.email "ci@example.org"
           git config --global user.name "CI"
+          rm .cargo/config.toml
           cargo binstall --no-confirm --no-symlinks --force --no-discover-github-token laze
+          git restore .cargo/config.toml
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
           sudo apt-get install ninja-build gcc-arm-none-eabi
 
