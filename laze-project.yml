@@ -6,3 +6,5 @@ imports:
 
 apps:
   - name: ariel-os-hello
+    selects:
+      - threading
