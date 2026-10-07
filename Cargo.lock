@@ -28,7 +28,7 @@ checksum = "c583acf993cf4245c4acb0a2cc2ab1f9cc097de73411bb6d3647ff6af2b1013d"
 
 [[package]]
 name = "ariel-os"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-boards",
  "ariel-os-buildinfo",
@@ -48,7 +48,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-alloc"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-log",
  "ariel-os-utils",
@@ -69,21 +69,25 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-buildinfo"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-utils",
 ]
 
 [[package]]
+name = "ariel-os-buildutils"
+version = "0.6.0"
+
+[[package]]
 name = "ariel-os-debug"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "featurecomb",
 ]
 
 [[package]]
 name = "ariel-os-embassy"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-boards",
  "ariel-os-buildinfo",
@@ -101,6 +105,7 @@ dependencies = [
  "embassy-futures",
  "embassy-hal-internal",
  "embassy-nrf",
+ "embassy-rp",
  "embassy-stm32",
  "embassy-sync 0.7.2",
  "embedded-hal 1.0.0",
@@ -114,7 +119,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-embassy-common"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-buildinfo",
  "ariel-os-utils",
@@ -126,7 +131,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-esp"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-embassy-common",
  "ariel-os-log",
@@ -140,12 +145,13 @@ dependencies = [
  "esp-hal",
  "esp-rom-sys",
  "paste",
+ "portable-atomic",
  "static_cell",
 ]
 
 [[package]]
 name = "ariel-os-hal"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-embassy-common",
  "ariel-os-esp",
@@ -172,7 +178,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-identity"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-embassy-common",
  "ariel-os-hal",
@@ -180,15 +186,14 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-log"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
- "ariel-os-debug",
  "featurecomb",
 ]
 
 [[package]]
 name = "ariel-os-macros"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -198,7 +203,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-native"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-buildinfo",
  "ariel-os-debug",
@@ -213,7 +218,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-nrf"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-embassy-common",
  "ariel-os-log",
@@ -229,7 +234,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-power"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "cortex-m",
  "esp-hal",
@@ -237,22 +242,26 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-rp"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
+ "ariel-os-buildutils",
  "ariel-os-embassy-common",
  "ariel-os-log",
  "ariel-os-utils",
+ "critical-section",
  "embassy-executor",
  "embassy-rp",
  "embedded-hal-async",
  "paste",
+ "portable-atomic",
 ]
 
 [[package]]
 name = "ariel-os-rt"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-alloc",
+ "ariel-os-buildutils",
  "ariel-os-debug",
  "ariel-os-log",
  "ariel-os-utils",
@@ -268,7 +277,7 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-stm32"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "ariel-os-embassy-common",
  "ariel-os-stm32-mapping",
@@ -284,14 +293,14 @@ dependencies = [
 
 [[package]]
 name = "ariel-os-stm32-mapping"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "embassy-stm32",
 ]
 
 [[package]]
 name = "ariel-os-utils"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
  "const-str",
  "const_panic",
@@ -754,8 +763,7 @@ checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
 [[package]]
 name = "embassy-embedded-hal"
 version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "554e3e840696f54b4c9afcf28a0f24da431c927f4151040020416e7393d6d0d8"
+source = "git+https://github.com/ariel-os/embassy?rev=5211daf214eecd64c6754b760fecdb1f16622312#5211daf214eecd64c6754b760fecdb1f16622312"
 dependencies = [
  "embassy-futures",
  "embassy-hal-internal",
@@ -846,8 +854,8 @@ dependencies = [
 
 [[package]]
 name = "embassy-nrf"
-version = "0.8.0"
-source = "git+https://github.com/ariel-os/embassy?rev=3940a79a29ae578a35625cae949bea473abf21d1#3940a79a29ae578a35625cae949bea473abf21d1"
+version = "0.9.0"
+source = "git+https://github.com/ariel-os/embassy?rev=cfaa7e92d1f79143b5e892442b1f2ff87b330770#cfaa7e92d1f79143b5e892442b1f2ff87b330770"
 dependencies = [
  "bitflags 2.10.0",
  "cfg-if",
@@ -856,6 +864,7 @@ dependencies = [
  "critical-section",
  "document-features",
  "embassy-embedded-hal",
+ "embassy-futures",
  "embassy-hal-internal",
  "embassy-sync 0.7.2",
  "embassy-usb-driver",
@@ -1880,9 +1889,8 @@ checksum = "650eef8c711430f1a879fdd01d4745a7deea475becfb90269c06775983bbf086"
 
 [[package]]
 name = "nrf-pac"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d334027d6703534f2a80de0794ae435c0e029358d28278533d3935e69b221b01"
+version = "0.2.0"
+source = "git+https://github.com/embassy-rs/nrf-pac.git?rev=074935b9b24ab302fe812f91725937f57cd082cf#074935b9b24ab302fe812f91725937f57cd082cf"
 dependencies = [
  "cortex-m",
  "cortex-m-rt",
@@ -2985,6 +2993,11 @@ dependencies = [
 [[patch.unused]]
 name = "cyw43"
 version = "0.5.0"
+source = "git+https://github.com/ariel-os/embassy?rev=603583d9#603583d94cb7ba14b3a6bbb84c8c5fea8bffea0d"
+
+[[patch.unused]]
+name = "cyw43-pio"
+version = "0.8.0"
 source = "git+https://github.com/ariel-os/embassy?rev=603583d9#603583d94cb7ba14b3a6bbb84c8c5fea8bffea0d"
 
 [[patch.unused]]
